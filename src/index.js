@@ -124,7 +124,10 @@ gridBoxes.forEach((gridBox, index) => {
 
                 // render the gameboard
                 document.querySelectorAll(".grid-box-text")[index].textContent = Game.getGameBoardArray()[index].value;
-                document.querySelectorAll(".grid-box-text")[index].style.scale = "1";
+                document.querySelectorAll(".grid-box-text")[index].style.scale = "1.30";
+                setTimeout(() => {
+                    document.querySelectorAll(".grid-box-text")[index].style.scale = "1";
+                }, 100);
 
                 updateUIInfo();
 

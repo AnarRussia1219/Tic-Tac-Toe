@@ -44,6 +44,11 @@ body {
 .grid-box {
     border: 0.5px solid rgba(255, 255, 255, 0.616);
     transition: 0.05s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 68px;
+    font-weight: 700;
 }
 
 .grid-box:nth-child(1) {
@@ -88,6 +93,11 @@ body {
 
 .grid-box:hover {
     background-color: rgba(255, 255, 255, 0.05);
+}
+
+.grid-box-text {
+    scale: 0;
+    transition: scale 0.15s;
 }
 
 .game-info {

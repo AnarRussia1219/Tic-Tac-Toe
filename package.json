@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "a beatiful tic tac toe game, interactive and fun",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "webpack:build": "npx webpack",
+    "webpack:watch": "npx webpack --watch"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "i": "^0.3.7",
+    "npm": "^10.8.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

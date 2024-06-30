@@ -42,7 +42,7 @@ body {
 }
 
 .grid-box {
-    border: 1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.616);
     transition: 0.05s;
 }
 
@@ -87,7 +87,7 @@ body {
 }
 
 .grid-box:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .game-info {

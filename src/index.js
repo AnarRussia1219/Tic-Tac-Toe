@@ -128,7 +128,6 @@ gridBoxes.forEach((gridBox, index) => {
                 setTimeout(() => {
                     document.querySelectorAll(".grid-box-text")[index].style.scale = "1";
                 }, 100);
-
                 updateUIInfo();
 
                 // check if won
@@ -187,6 +186,7 @@ gridBoxes.forEach((gridBox, index) => {
                 text.textContent = "";
                 text.style.color = "#ffffff";
             });
+            updateUIInfo();
         };
     });
 });

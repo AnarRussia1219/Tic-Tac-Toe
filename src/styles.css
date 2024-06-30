@@ -12,6 +12,7 @@ html, body {
 }
 
 :root {
+    --grid-box-border-radius: 10px;
     font-size: 16px;
     font-family: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -19,4 +20,71 @@ html, body {
 body {
     background-color: #0c0c0c;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-positioner {
+    width: 400px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.boxes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 75%;
+}
+
+.grid-box {
+    border: 1px solid white;
+    transition: 0.05s;
+}
+
+.grid-box:nth-child(1) {
+    border-top: none;
+    border-left: none;
+    border-top-left-radius: var(--grid-box-border-radius);
+}
+
+.grid-box:nth-child(2) {
+    border-top: none;
+}
+
+.grid-box:nth-child(3) {
+    border-top: none;
+    border-right: none;
+    border-top-right-radius: var(--grid-box-border-radius);
+}
+
+.grid-box:nth-child(4) {
+    border-left: none;
+}
+
+.grid-box:nth-child(6) {
+    border-right: none;
+}
+
+.grid-box:nth-child(7) {
+    border-bottom: none;
+    border-left: none;
+    border-bottom-left-radius: var(--grid-box-border-radius);
+}
+
+.grid-box:nth-child(8) {
+    border-bottom: none;
+}
+
+.grid-box:nth-child(9) {
+    border-bottom: none;
+    border-right: none;
+    border-bottom-right-radius: var(--grid-box-border-radius);
+}
+
+.grid-box:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }

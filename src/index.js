@@ -139,6 +139,29 @@ gridBoxes.forEach((gridBox, index) => {
                         document.querySelectorAll(".grid-box-text").forEach((text, index) => {
                             if (index !== a && index !== b && index !== c) {
                                 text.style.color = "rgba(255, 255, 255, 0.5)";
+                            } else {
+                                text.style.display = "none";
+
+                                // animation
+                                setTimeout(() => {
+                                    text.style.display = "inline";
+
+                                    setTimeout(() => {
+                                        text.style.display = "none";
+
+                                        setTimeout(() => {
+                                            text.style.display = "inline";
+
+                                            setTimeout(() => {
+                                                text.style.display = "none";
+
+                                                setTimeout(() => {
+                                                    text.style.display = "inline";
+                                                }, 50);
+                                            }, 50);
+                                        }, 50);
+                                    }, 50);
+                                }, 50);
                             };
                         });
                         if (Game.getCurrentPlayer() === Game.player1) {

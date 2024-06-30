@@ -117,8 +117,8 @@ const winningGameBoardsequences = [
 
 gridBoxes.forEach((gridBox, index) => {
     gridBox.addEventListener("click", function() {
-        if (!Game.getGameBoardArray()[index].selected) {
-            if (Game.getPlaying()) {
+        if (Game.getPlaying()) {
+            if (!Game.getGameBoardArray()[index].selected) {
                 // console.log(1); // test
                 Game.updateGameBoardArray(index, new GameBoardBox(Game.getCurrentPlayer(), true));
 
@@ -152,15 +152,15 @@ gridBoxes.forEach((gridBox, index) => {
 
                 Game.updateCurrentPlayer();
                 updateUIInfo();
-            } else {
-                Game.setPlaying(true);
-                Game.resetGameBoardArray();
-                Game.updateCurrentPlayer();
-                document.querySelectorAll(".grid-box-text").forEach(text => {
-                    text.textContent = "";
-                    text.style.color = "#ffffff";
-                });
-            };
+        };
+        } else {
+            Game.setPlaying(true);
+            Game.resetGameBoardArray();
+            Game.updateCurrentPlayer();
+            document.querySelectorAll(".grid-box-text").forEach(text => {
+                text.textContent = "";
+                text.style.color = "#ffffff";
+            });
         };
     });
 });

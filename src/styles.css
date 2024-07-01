@@ -115,6 +115,10 @@ body {
     font-weight: 100;
 }
 
+.score-info-box--tie {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .score-info-player-1-number, .score-info-tie-number, .score-info-player-2-number {
     font-size: 24px;
 }

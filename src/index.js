@@ -49,6 +49,8 @@ function GameBoard(player1, player2) {
             player1Score = to;
         } else if (player === 2) {
             player2Score = to;
+        } else if (player === "tie") {
+            ties = to;
         };
     };
 
@@ -86,13 +88,12 @@ updateUIInfo();
 function updateUIInfo() {
     if (Game.getCurrentPlayer() === Game.player1) {
         document.querySelector(".score-info-box:nth-child(1)").style.color = "#ffffff";
-        document.querySelector(".score-info-box:nth-child(2)").style.color = "rgba(255, 255, 255, 0.5)";
         document.querySelector(".score-info-box:nth-child(3)").style.color = "rgba(255, 255, 255, 0.5)";
     } else if (Game.getCurrentPlayer() === Game.player2) {
         document.querySelector(".score-info-box:nth-child(3)").style.color = "#ffffff";
         document.querySelector(".score-info-box:nth-child(1)").style.color = "rgba(255, 255, 255, 0.5)";
-        document.querySelector(".score-info-box:nth-child(2)").style.color = "rgba(255, 255, 255, 0.5)";
     };
+    document.querySelector(".score-info-box--tie").style.color = "rgba(255, 255, 255, 0.5";
     scoreInfoPlayer1Text.textContent = `PLAYER 1(${Game.player1})`;
     scoreInfoPlayer1Number.textContent = String(Game.getScore().player1Score);
 
@@ -131,9 +132,11 @@ gridBoxes.forEach((gridBox, index) => {
                 updateUIInfo();
 
                 // check if won
+                let won = false;
                 for (let i = 0; i < winningGameBoardsequences.length; i++) {
                     const [a, b, c] = winningGameBoardsequences[i];
                     if (Game.getGameBoardArray()[a].value && Game.getGameBoardArray()[a].value === Game.getGameBoardArray()[b].value && Game.getGameBoardArray()[a].value === Game.getGameBoardArray()[c].value) {
+                        won = true;
                         Game.setPlaying(false);
                         document.querySelectorAll(".grid-box-text").forEach((text, index) => {
                             if (index !== a && index !== b && index !== c) {
@@ -171,13 +174,41 @@ gridBoxes.forEach((gridBox, index) => {
 
                         updateUIInfo();
 
-                        return; break;
+                        return;
                     };
                 };
 
-                Game.updateCurrentPlayer();
-                updateUIInfo();
-        };
+                // check if tie
+                const array = Game.getGameBoardArray();
+                let tie; // BOOL
+                let allSelected = true;
+
+                for (let j = 0; j < array.length; j++) {
+                    if (!array[j].selected) {
+                        allSelected = false;
+                        break;
+                    };
+                };
+
+                if (won === false && allSelected) {
+                    tie = true;
+                } else {
+                    tie = false;
+                };
+
+                if (tie) {
+                    Game.setPlaying(false);
+                    Game.updateScore("tie", Number(Game.getScore().ties) + 1);
+                    updateUIInfo();
+                    document.querySelector(".score-info-box:nth-child(1)").style.color = "rgba(255, 255, 255, 0.5)";
+                    document.querySelector(".score-info-box:nth-child(3)").style.color = "rgba(255, 255, 255, 0.5)";
+                    document.querySelector(".score-info-box--tie").style.color = "#ffffff";
+                } else {
+                    Game.updateCurrentPlayer();
+                    updateUIInfo();
+                    document.querySelector(".score-info-box--tie").style.color = "rgba(255, 255, 255, 0.5)";
+                };
+            };
         } else {
             Game.setPlaying(true);
             Game.resetGameBoardArray();
